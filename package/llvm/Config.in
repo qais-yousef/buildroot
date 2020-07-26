@@ -34,6 +34,12 @@ config BR2_PACKAGE_LLVM_AMDGPU
 	  Build AMDGPU target. Select this option if you are going
 	  to install mesa3d with llvm and use Gallium Radeon driver.
 
+config BR2_PACKAGE_LLVM_BPF
+	bool "BPF backend"
+	help
+	  Build BPF target. Select this option if you want to use BPF tools
+	  like BCC on the target.
+
 config BR2_PACKAGE_LLVM_RTTI
 	bool "enable rtti"
 	help
