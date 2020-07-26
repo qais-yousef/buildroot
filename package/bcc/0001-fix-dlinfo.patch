@@ -1,0 +1,15 @@
+--- ./tests/cc/test_c_api.cc.old	2020-07-27 00:57:13.681656086 +0100
++++ ./tests/cc/test_c_api.cc	2020-07-27 00:57:25.258110970 +0100
+@@ -151,10 +151,12 @@
+     return -1;
+   }
+ 
++  /*
+   if (dlinfo(dlhdl, RTLD_DI_LINKMAP, &lm) < 0) {
+     fprintf(stderr, "Unable to find origin of libz.so.1: %s\n", dlerror());
+     return -1;
+   }
++  */
+ 
+   strncpy(libpath, lm->l_name, 1024);
+   dlclose(dlhdl);
