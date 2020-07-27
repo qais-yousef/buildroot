@@ -1,0 +1,20 @@
+--- ./src/attached_probe.cpp.old	2020-07-28 13:23:20.599528129 +0100
++++ ./src/attached_probe.cpp	2020-07-28 13:23:49.199715578 +0100
+@@ -8,7 +8,7 @@
+ #include <linux/limits.h>
+ #include <linux/perf_event.h>
+ #include <regex>
+-#include <sys/auxv.h>
++//#include <sys/auxv.h>
+ #include <sys/utsname.h>
+ #include <tuple>
+ #include <unistd.h>
+@@ -612,7 +612,7 @@
+       // the build-time constant if unavailable. This always matches the
+       // running kernel, but is not supported on arm32.
+       unsigned code = 0;
+-      unsigned long base = getauxval(AT_SYSINFO_EHDR);
++      unsigned long base = 0; //getauxval(AT_SYSINFO_EHDR);
+       if (base && !memcmp(reinterpret_cast<void *>(base), ELFMAG, 4))
+         code = _find_version_note(base);
+       if (! code)
