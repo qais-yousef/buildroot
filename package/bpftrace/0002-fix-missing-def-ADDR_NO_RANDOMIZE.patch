@@ -1,0 +1,11 @@
+--- ./src/bpftrace.cpp.old	2020-07-28 13:24:42.322117517 +0100
++++ ./src/bpftrace.cpp	2020-07-28 13:25:08.651880968 +0100
+@@ -37,6 +37,8 @@
+ #include "triggers.h"
+ #include "utils.h"
+ 
++#define ADDR_NO_RANDOMIZE	0x0040000
++
+ namespace libbpf {
+ #define __BPF_NAME_FN(x) #x
+ const char *bpf_func_name[] = { __BPF_FUNC_MAPPER(__BPF_NAME_FN) };
