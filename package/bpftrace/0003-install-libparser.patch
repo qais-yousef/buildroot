@@ -1,0 +1,10 @@
+--- ./CMakeLists.txt.old	2020-07-28 23:08:33.068910392 +0100
++++ ./CMakeLists.txt	2020-07-28 23:08:41.529166766 +0100
+@@ -94,6 +94,7 @@
+ add_library(parser ${BISON_bison_parser_OUTPUTS} ${FLEX_flex_lexer_OUTPUTS})
+ target_compile_options(parser PRIVATE "-w")
+ target_include_directories(parser PUBLIC src src/ast ${CMAKE_BINARY_DIR})
++install(TARGETS parser LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ include(CheckSymbolExists)
+ set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
