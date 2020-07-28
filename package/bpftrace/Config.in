@@ -1,10 +1,11 @@
 config BR2_PACKAGE_BPFTRACE
 	bool "bpftrace"
 	depends on BR2_PACKAGE_BCC
+	depends on BR2_PACKAGE_LLVM_RTTI
 	help
 	  BPFTrace
 
 	  https://www.github.com/iovisor/bpftrace
 
-comment "bpftrace needs bcc"
-	depends on !BR2_PACKAGE_BCC
+comment "bpftrace needs bcc, llvm-rtti"
+	depends on !BR2_PACKAGE_BCC || !BR2_PACKAGE_LLVM_RTTI
