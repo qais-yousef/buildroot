@@ -1,0 +1,13 @@
+--- ./tools/libclang/CMakeLists.txt.old	2020-08-02 10:17:54.995944248 +0100
++++ ./tools/libclang/CMakeLists.txt	2020-08-02 10:20:56.150147251 +0100
+@@ -58,10 +58,7 @@
+   endif()
+ endif ()
+ 
+-find_library(DL_LIBRARY_PATH dl)
+-if (DL_LIBRARY_PATH)
+   list(APPEND LIBS dl)
+-endif()
+ 
+ option(LIBCLANG_BUILD_STATIC
+   "Build libclang as a static library (in addition to a shared one)" OFF)
