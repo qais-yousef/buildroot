@@ -11,7 +11,7 @@ BCC_GIT_SUBMODULES = YES
 BCC_LICENSE = Apache-2.0
 BCC_LICENSE_FILES = LICENSE.txt
 BCC_INSTALL_STAGING = YES
-BCC_DEPENDENCIES = host-bison host-flex elfutils clang llvm
+BCC_DEPENDENCIES = host-bison host-flex host-zlib zlib elfutils clang llvm
 
 BCC_CONF_OPTS += \
 	-DCMAKE_CXX_FLAGS="$(TARGET_CXXFLAGS) -isystem $(HOST_DIR)/include"
