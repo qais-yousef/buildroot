@@ -2,13 +2,15 @@ config BR2_PACKAGE_BCC
 	bool "bcc"
 	depends on BR2_INSTALL_LIBSTDCPP
 	depends on BR2_PACKAGE_ELFUTILS
+	depends on BR2_PACKAGE_PYTHON
 	depends on BR2_PACKAGE_CLANG
 	depends on BR2_PACKAGE_LLVM
 	depends on BR2_PACKAGE_LLVM_BPF
+	select BR2_PACKAGE_ZLIB
 	help
 	  BPF Compiler Collection
 
 	  https://www.github.com/iovisor/bcc
 
-comment "bcc needs a toolchain w/ C++, elfutils, clang, llvm, llvm-bpf"
-	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_PACKAGE_ELFUTILS || !BR2_PACKAGE_CLANG || !BR2_PACKAGE_LLVM || !BR2_PACKAGE_LLVM_BPF
+comment "bcc needs a toolchain w/ C++, elfutils, python, clang, llvm, llvm-bpf"
+	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_PACKAGE_ELFUTILS || !BR2_PACKAGE_PYTHON || !BR2_PACKAGE_CLANG || !BR2_PACKAGE_LLVM || !BR2_PACKAGE_LLVM_BPF
