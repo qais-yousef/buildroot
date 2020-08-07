@@ -8,6 +8,7 @@ config BR2_PACKAGE_BCC
 	depends on BR2_PACKAGE_LLVM
 	depends on BR2_PACKAGE_LLVM_BPF
 	select BR2_PACKAGE_ZLIB
+	select BR2_PACKAGE_TAR
 	help
 	  BPF Compiler Collection
 
