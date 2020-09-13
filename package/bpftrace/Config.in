@@ -1,11 +1,15 @@
 config BR2_PACKAGE_BPFTRACE
 	bool "bpftrace"
+	depends on BR2_aarch64 || BR2_aarch64_be || BR2_x86_64
 	depends on BR2_PACKAGE_BCC
 	depends on BR2_PACKAGE_LLVM_RTTI
 	help
 	  BPFTrace
 
 	  https://www.github.com/iovisor/bpftrace
+
+comment "bpftrace supported on aarch64 and x86_64"
+	depends on !(BR2_aarch64 || BR2_aarch64_be || BR2_x86_64)
 
 comment "bpftrace needs bcc, llvm-rtti"
 	depends on !BR2_PACKAGE_BCC || !BR2_PACKAGE_LLVM_RTTI
