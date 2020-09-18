@@ -1,0 +1,12 @@
+Signed-off-by: Qais Yousef <qais.yousef@arm.com>
+
+--- ./resources/CMakeLists.txt.old	2020-07-28 23:08:53.037515482 +0100
++++ ./resources/CMakeLists.txt	2020-07-28 23:09:24.934482032 +0100
+@@ -1,6 +1,7 @@
+ add_library(resources headers.cpp)
+ 
+ target_include_directories(resources PUBLIC ../src)
++install(TARGETS resources LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ function(embed_headers output)
+   file(WRITE ${output} "#include \"headers.h\"\n\nnamespace bpftrace {\n")

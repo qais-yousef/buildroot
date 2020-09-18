@@ -1,0 +1,10 @@
+Signed-off-by: Qais Yousef <qais.yousef@arm.com>
+
+--- ./src/arch/CMakeLists.txt.old	2020-07-28 23:01:18.283735497 +0100
++++ ./src/arch/CMakeLists.txt	2020-07-28 23:02:13.865419746 +0100
+@@ -11,3 +11,5 @@
+ else()
+   message(FATAL_ERROR "Unsupported architecture: ${CMAKE_SYSTEM_PROCESSOR}")
+ endif()
++
++install(TARGETS arch LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

@@ -1,0 +1,11 @@
+Signed-off-by: Qais Yousef <qais.yousef@arm.com>
+
+--- ./src/ast/CMakeLists.txt.old	2020-07-28 23:00:16.837873565 +0100
++++ ./src/ast/CMakeLists.txt	2020-07-28 23:04:08.320887977 +0100
+@@ -67,4 +67,6 @@
+     target_link_libraries(ast ${llvm_libs})
+   endif()
+   target_link_libraries(ast libclang)
++
++  install(TARGETS ast LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ endif()
