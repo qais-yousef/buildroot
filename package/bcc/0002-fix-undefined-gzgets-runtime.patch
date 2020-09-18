@@ -1,0 +1,15 @@
+Signed-off-by: Qais Yousef <qais.yousef@arm.com>
+
+--- ./src/cc/CMakeLists.txt.old	2020-08-02 19:32:16.502841991 +0100
++++ ./src/cc/CMakeLists.txt	2020-08-02 19:32:47.263965564 +0100
+@@ -136,8 +136,8 @@
+ add_subdirectory(frontends)
+ 
+ # Link against LLVM libraries
+-target_link_libraries(bcc-shared ${bcc_common_libs_for_s})
+-target_link_libraries(bcc-static ${bcc_common_libs_for_a} bcc-loader-static)
++target_link_libraries(bcc-shared ${bcc_common_libs_for_s} z)
++target_link_libraries(bcc-static ${bcc_common_libs_for_a} bcc-loader-static z)
+ set(bcc-lua-static ${bcc-lua-static} ${bcc_common_libs_for_lua})
+ 
+ if(LIBBPF_FOUND)

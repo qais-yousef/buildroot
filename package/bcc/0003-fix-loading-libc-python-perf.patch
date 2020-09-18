@@ -1,0 +1,17 @@
+Signed-off-by: Qais Yousef <qais.yousef@arm.com>
+
+--- ./src/python/bcc/perf.py.old	2020-08-02 20:29:54.769226300 +0100
++++ ./src/python/bcc/perf.py	2020-08-02 20:32:13.130379117 +0100
+@@ -64,7 +64,11 @@
+         PERF_EVENT_IOC_ENABLE = 9216
+ 
+         # fetch syscall routines
+-        libc = ct.CDLL('libc.so.6', use_errno=True)
++        try:
++            libc = ct.CDLL('libc.so.6', use_errno=True)
++        except:
++            # Try lower versions; works for uClibc
++            libc = ct.CDLL('libc.so.1', use_errno=True)
+         syscall = libc.syscall          # not declaring vararg types
+         ioctl = libc.ioctl              # not declaring vararg types
+ 

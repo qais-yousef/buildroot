@@ -1,0 +1,17 @@
+Signed-off-by: Qais Yousef <qais.yousef@arm.com>
+
+--- ./src/python/bcc/__init__.py.old	2020-08-02 20:29:51.817116507 +0100
++++ ./src/python/bcc/__init__.py	2020-08-02 20:30:47.971206447 +0100
+@@ -200,7 +200,11 @@
+     class timespec(ct.Structure):
+         _fields_ = [('tv_sec', ct.c_long), ('tv_nsec', ct.c_long)]
+ 
+-    _librt = ct.CDLL('librt.so.1', use_errno=True)
++    try:
++        _librt = ct.CDLL('librt.so.1', use_errno=True)
++    except:
++        # In some embedded systems (uClibc), libc contains librt
++        _librt = ct.CDLL('libc.so.1', use_errno=True)
+     _clock_gettime = _librt.clock_gettime
+     _clock_gettime.argtypes = [ct.c_int, ct.POINTER(timespec)]
+ 
