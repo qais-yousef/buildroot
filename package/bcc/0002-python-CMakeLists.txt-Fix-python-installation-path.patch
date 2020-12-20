@@ -1,0 +1,34 @@
+From 15d8445905b6023eb369083392dd1018d31e9664 Mon Sep 17 00:00:00 2001
+From: Qais Yousef <qais.yousef@arm.com>
+Date: Fri, 18 Dec 2020 16:36:15 +0000
+Subject: [PATCH] python/CMakeLists.txt: Fix python installation path
+
+The check for /etc/debian_version is unfriendly to cross build
+environment like buildroot. It tries to identify the distro of the host,
+but since we're in cross build environment this obviously breaks.
+
+Remove this check for now.
+
+Signed-off-by: Qais Yousef <qais.yousef@arm.com>
+---
+ src/python/CMakeLists.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
+index fa602397..797e0d14 100644
+--- a/src/python/CMakeLists.txt
++++ b/src/python/CMakeLists.txt
+@@ -5,10 +5,6 @@ if(NOT PYTHON_CMD)
+   set(PYTHON_CMD "python")
+ endif()
+ 
+-if(EXISTS "/etc/debian_version")
+-  set(PYTHON_FLAGS "${PYTHON_FLAGS} --install-layout deb")
+-endif()
+-
+ file(GLOB_RECURSE PYTHON_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_CURRENT_SOURCE_DIR}/*.py)
+ file(GLOB_RECURSE PYTHON_INCLUDES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
+-- 
+2.25.1
+

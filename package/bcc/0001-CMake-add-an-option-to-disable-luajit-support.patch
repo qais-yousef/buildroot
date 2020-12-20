@@ -1,0 +1,45 @@
+From b61c5eb0b2c385a6d3bbabf2396cb363588b32ab Mon Sep 17 00:00:00 2001
+From: Romain Naour <romain.naour@gmail.com>
+Date: Sun, 6 Dec 2020 17:15:25 +0100
+Subject: [PATCH] CMake: add an option to disable luajit support
+
+bcc luajit support is optional and should be disabled
+when luajit is not available.
+
+This option allow to explicitely disable luajit when
+cross-compiling.
+
+Signed-off-by: Romain Naour <romain.naour@gmail.com>
+---
+ CMakeLists.txt     | 2 ++
+ src/CMakeLists.txt | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 74fe4f19..c87b28c4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,6 +40,8 @@ option(ENABLE_LLVM_SHARED "Enable linking LLVM as a shared library" OFF)
+ option(ENABLE_CLANG_JIT "Enable Loading BPF through Clang Frontend" ON)
+ option(ENABLE_USDT "Enable User-level Statically Defined Tracing" ON)
+ option(ENABLE_MAN "Build man pages" ON)
++cmake_dependent_option(ENABLE_LUAJIT "Use Luajit" ON "ENABLE_CLANG_JIT" OFF)
++
+ CMAKE_DEPENDENT_OPTION(ENABLE_CPP_API "Enable C++ API" ON "ENABLE_USDT" OFF)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 37b7e289..78c5fe58 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -17,5 +17,7 @@ add_subdirectory(cc)
+ endif()
+ if(ENABLE_CLANG_JIT)
+ add_subdirectory(python)
++if(ENABLE_LUAJIT)
+ add_subdirectory(lua)
+ endif()
++endif()
+-- 
+2.25.4
+
