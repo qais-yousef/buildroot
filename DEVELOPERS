@@ -2245,6 +2245,7 @@ F:	package/glibc/
 F:	package/irrlicht/
 F:	package/liblinear/
 F:	package/lensfun/
+F:	package/libbpf/
 F:	package/libclc/
 F:	package/libgta/
 F:	package/libspatialindex/
